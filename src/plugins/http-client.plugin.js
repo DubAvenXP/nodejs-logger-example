@@ -1,28 +1,22 @@
+const axios = require("axios");
+
 const httpClient = {
     get: async (url) => {
-        const response = await fetch(url);
-        return response.json();
+        const { data } = await axios.get(url);
+        return data;
     },
     post: async (url, body) => {
-        const response = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify(body),
-        });
-        return response.json();
+        const { data } = await axios.post(url, body);
+        return data;
     },
     put: async (url, body) => {
-        const response = await fetch(url, {
-            method: "PUT",
-            body: JSON.stringify(body),
-        });
-        return response.json();
+        const { data } = await axios.put(url, body);
+        return data;
     },
     delete: async (url) => {
-        const response = await fetch(url, {
-            method: "DELETE",
-        });
-        return response.json();
+        const { data } = await axios.delete(url);
+        return data;
     },
-}
+};
 
 module.exports = { httpClient };
