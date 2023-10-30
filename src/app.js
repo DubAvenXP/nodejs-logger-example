@@ -1,4 +1,4 @@
-// const { getAge, generateUUID } = require('./plugins')
+const { getAge, generateUUID, buildLogger } = require('./plugins')
 
 // const { emailTemplate } = require("./js-foundation/01-template");
 // require("./js-foundation/02-destructuring");
@@ -17,14 +17,25 @@ const { getPokemonById } = require("./js-foundation/05-promises");
 // const person = makePerson(obj);
 // console.log(person);
 
-getPokemonById(7).then((pokemon) => {
-    console.log({
-        name: pokemon.name,
-        id: pokemon.id,
-        height: pokemon.height,
-        weight: pokemon.weight,
-        abilities: pokemon.abilities.map((ability) => ability.ability.name),
-        types: pokemon.types.map((type) => type.type.name),
-    });
-});
+const logger = buildLogger('app.js');
+
+logger.log('Hello world!');
+
+// getPokemonById(7)
+//     .then((pokemon) => {
+//         console.log({
+//             id: pokemon.id,
+//             name: pokemon.name,
+//             height: pokemon.height,
+//             weight: pokemon.weight,
+//             abilities: pokemon.abilities.map((ability) => ability.ability.name),
+//             types: pokemon.types.map((type) => type.type.name),
+//         });
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
+//     .finally(() => {
+//         console.log("Done!");
+//     });
 
