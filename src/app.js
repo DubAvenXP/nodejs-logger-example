@@ -20,6 +20,7 @@ const { getPokemonById } = require("./js-foundation/05-promises");
 const logger = buildLogger('app.js');
 
 logger.log('Hello world!');
+logger.error('This is an error')
 
 // getPokemonById(7)
 //     .then((pokemon) => {
