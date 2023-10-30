@@ -18,25 +18,20 @@ const { getPokemonById } = require("./js-foundation/05-promises");
 // console.log(person);
 
 const logger = buildLogger('app.js');
+const formatPokemon = (pokemon) => {
+    return {
+        id: pokemon.id, name: pokemon.name, height: pokemon.height, weight: pokemon.weight,
+        abilities: pokemon.abilities.map((ability) => ability.ability.name),
+        types: pokemon.types.map((type) => type.type.name),
+    }
+}
 
-logger.log('Hello world!');
-logger.error('This is an error')
+// logger.log('Hello world!');
+// logger.error('This is an error')
 
-// getPokemonById(7)
-//     .then((pokemon) => {
-//         console.log({
-//             id: pokemon.id,
-//             name: pokemon.name,
-//             height: pokemon.height,
-//             weight: pokemon.weight,
-//             abilities: pokemon.abilities.map((ability) => ability.ability.name),
-//             types: pokemon.types.map((type) => type.type.name),
-//         });
-//     })
-//     .catch((error) => {
-//         console.log(error);
-//     })
-//     .finally(() => {
-//         console.log("Done!");
-//     });
+getPokemonById(7)
+    .then((pokemon) => { logger.log(formatPokemon(pokemon)); })
+    .catch((error) => { logger.error(error); })
+    .finally(() => { logger.log('Done!'); });
+
 
