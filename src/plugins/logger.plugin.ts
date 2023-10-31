@@ -1,4 +1,4 @@
-const winston = require("winston");
+import winston from "winston";
 const { combine, timestamp, json, simple } = winston.format
 
 const logger = winston.createLogger({
@@ -19,12 +19,12 @@ logger.add(
     })
 );
 
-module.exports = function buildLogger(service) {
+export default function buildLogger(service: string) {
     return {
-        log: (message) => {
+        log: <T>(message: string | T) => {
             logger.log("info", { message, service });
         },
-        error: (message) => {
+        error: <T>(message: string | T) => {
             logger.error("error", { message, service,  });
         }
     };

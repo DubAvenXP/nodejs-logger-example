@@ -1,22 +1,20 @@
 const axios = require("axios");
 
-const httpClient = {
-    get: async (url) => {
+export const httpClient = {
+    get: async <T>(url: string): Promise<T> => {
         const { data } = await axios.get(url);
         return data;
     },
-    post: async (url, body) => {
+    post: async <T>(url: string, body: T): Promise<T> => {
         const { data } = await axios.post(url, body);
         return data;
     },
-    put: async (url, body) => {
+    put: async <T>(url: string, body: T): Promise<T> => {
         const { data } = await axios.put(url, body);
         return data;
     },
-    delete: async (url) => {
+    delete: async (url: string): Promise<void> => {
         const { data } = await axios.delete(url);
         return data;
     },
 };
-
-module.exports = { httpClient };
