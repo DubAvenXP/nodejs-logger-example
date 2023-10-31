@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 export const httpClient = {
     get: async <T>(url: string): Promise<T> => {
